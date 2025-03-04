@@ -146,7 +146,7 @@ nav {
 
 /* Hero Section */
 #hero {
-    height: 100vh;
+    height: 60vh;
     display: flex;
     align-items: center;
     background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url("https://assets.codepen.io/907471/DALL%C2%B7E+2024-07-25+12.21.18+-+A+vibrant+background+perfect+for+a+glassmorphic+user+interface+in+a+landscape+format.+The+design+features+a+gradient+of+gold%2C+brown%2C+black%2C+and+white%2C.webp") center/cover no-repeat;
@@ -657,7 +657,7 @@ footer {
     }
 
     .hero-subtitle {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .section-title {
