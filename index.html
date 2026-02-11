@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MEAL Expert | Statistical Modeling | Data Analytics | Research - 10+ years transforming health data into actionable insights across Africa and Asia">
+    <meta name="keywords" content="MEAL, Monitoring and Evaluation, Data Analytics, Statistical Modeling, Public Health, Research, Evidence Action">
+    <meta name="author" content="Your Name">
+    <title>Data Analytics & MEAL Portfolio</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- React and Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        #root {
+            min-height: 100vh;
+        }
+        #loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a1628 0%, #0f1e33 50%, #0a1628 100%);
+            color: #06b6d4;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div id="loading">Loading Portfolio...</div>
+    </div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        
+        // Lucide icons from UMD build
+        const Mail = (props) => React.createElement('i', { 'data-lucide': 'mail', ...props });
+        const Linkedin = (props) => React.createElement('i', { 'data-lucide': 'linkedin', ...props });
+        const Github = (props) => React.createElement('i', { 'data-lucide': 'github', ...props });
+        const Globe = (props) => React.createElement('i', { 'data-lucide': 'globe', ...props });
+        const ChevronRight = (props) => React.createElement('i', { 'data-lucide': 'chevron-right', ...props });
+        const Database = (props) => React.createElement('i', { 'data-lucide': 'database', ...props });
+        const TrendingUp = (props) => React.createElement('i', { 'data-lucide': 'trending-up', ...props });
+        const Users = (props) => React.createElement('i', { 'data-lucide': 'users', ...props });
+        const Award = (props) => React.createElement('i', { 'data-lucide': 'award', ...props });
+        const ExternalLink = (props) => React.createElement('i', { 'data-lucide': 'external-link', ...props });
+        const Calendar = (props) => React.createElement('i', { 'data-lucide': 'calendar', ...props });
+        const Tag = (props) => React.createElement('i', { 'data-lucide': 'tag', ...props });
+
+        console.log('Portfolio script loaded');
+        
+        const Portfolio = () => {
+          const [activeSection, setActiveSection] = useState('hero');
+          const [scrollProgress, setScrollProgress] = useState(0);
+
+          useEffect(() => {
+            const handleScroll = () => {
+              const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+              const currentProgress = (window.scrollY / totalScroll) * 100;
+              setScrollProgress(currentProgress);
+
+              const sections = ['hero', 'about', 'experience', 'projects', 'publications', 'skills', 'contact'];
+              const current = sections.find(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                  const rect = element.getBoundingClientRect();
+                  return rect.top <= 150 && rect.bottom >= 150;
+                }
+                return false;
+              });
+              if (current) setActiveSection(current);
+            };
+
+            window.addEventListener('scroll', handleScroll);
+            
+            return () => window.removeEventListener('scroll', handleScroll);
+          }, []);
+          
+          // Initialize Lucide icons after component mounts
+          useEffect(() => {
+            if (window.lucide) {
+              lucide.createIcons();
+            }
+          });
+
+          const experiences = [
+            {
+              title: "Manager, Data Analytics and Learning",
+              company: "Evidence Action",
+              period: "Jan 2022 – Current",
+              location: "Supporting 13+ projects across Africa & Asia",
+              description: "Leading MEAL frameworks development and data analytics across multiple health interventions",
+              achievements: [
+                "Led publishing of first externally-facing research paper from MEAL team",
+                "Integrated DtW program data into Ministry of Education and Health systems in Kenya and Pakistan",
+                "Developed RFPs and SOWs for Independent Monitoring firms across 5 countries",
+                "Conducted formative research guiding program scale-up in Nigeria"
+              ],
+              tech: ["R", "Python", "SQL", "PowerBI", "DHIS2"],
+              size: 'large',
+              current: true
+            },
+            {
+              title: "Data Engineering and Analytics Consultant",
+              company: "Crown Agents",
+              period: "Nov 2020 – May 2021",
+              location: "Kenya",
+              description: "Integrated WASH and NTD data systems for joint planning and advocacy",
+              achievements: [
+                "Built and integrated Kenya NTD database into existing WASH databases in DHIS",
+                "Developed comprehensive Indicator Reference Sheet for WASH/NTD indicators",
+                "Designed NTD endemicity/WASH access decision tools",
+                "Built capacity for Ministry of Health Kenya in NTD data management"
+              ],
+              tech: ["DHIS2", "SQL", "Python", "GIS"],
+              size: 'medium'
+            },
+            {
+              title: "Associate Manager, Monitoring, Learning & Evaluation",
+              company: "Evidence Action",
+              period: "Jan 2019 – Dec 2021",
+              location: "Kenya, Nigeria, Uganda, Malawi, Pakistan, India",
+              description: "Spearheaded digital transformation and data quality improvements across multiple programs",
+              achievements: [
+                "Implemented electronic data collection in Kenya and Pakistan, improving reporting timelines by 60%",
+                "Reduced Ministry of Health reporting times from 45 to 7 days through robust system improvements",
+                "Developed dynamic data system for NPELF program adopted by DVBNTD department",
+                "Trained data analytics team on reproducible analysis scripts"
+              ],
+              tech: ["ODK", "SQL", "Stata", "R", "Excel"],
+              size: 'large'
+            },
+            {
+              title: "Senior Associate, Data Management",
+              company: "Evidence Action",
+              period: "Mar 2016 – Dec 2018",
+              location: "Kenya, Uganda, Malawi, Nigeria",
+              description: "Overhauled data management pipelines and digitized complex survey systems",
+              achievements: [
+                "Developed comprehensive SOPs, checklists and manuals for data management",
+                "Digitized complex surveys, reducing costs and increasing efficiency",
+                "Created placement algorithm for 5000+ volunteer placements nationwide",
+                "Built SQL-based databases for ongoing and new projects"
+              ],
+              tech: ["SQL", "Excel", "PowerBI", "ODK", "Python"],
+              size: 'medium'
+            },
+            {
+              title: "Data Analytics Consultant",
+              company: "PAL Network / Twaweza East Africa",
+              period: "Apr 2015 – Feb 2018",
+              location: "East Africa",
+              description: "Electronic data capture systems and automated reporting",
+              achievements: [
+                "Designed and developed PC and mobile EDC systems (CSPro & KoBo)",
+                "Automated progress and descriptive analysis reports",
+                "Led design, pilot and adaptation of data collection instruments"
+              ],
+              tech: ["CSPro", "KoBo", "Stata"],
+              size: 'small'
+            },
+            {
+              title: "Data Manager",
+              company: "Kenya Medical Research Institute (KEMRI)",
+              period: "Aug 2014 – Mar 2015",
+              location: "Kenya",
+              description: "Data management for health surveys and research projects",
+              achievements: [
+                "Linked KEMRI databases with Kenya HMIS",
+                "Developed SOPs for data handling pipeline",
+                "Digitized data collection instruments"
+              ],
+              tech: ["Stata", "SAS", "ODK", "SQL"],
+              size: 'small'
+            }
+          ];
+
+          const projects = [
+            {
+              title: "NEMIS Integration System",
+              subtitle: "National Education Information Management System",
+              category: "System Integration",
+              description: "Developed and integrated Deworming treatment data module into Kenya's National Education Information Management System, creating interoperability with Kenya Health Information System for nationwide program reach.",
+              impact: [
+                "National-scale data integration across Education and Health sectors",
+                "Real-time tracking of 10M+ student deworming treatments",
+                "Seamless data flow between NEMIS and KHIS platforms",
+                "Foundation for evidence-based policy decisions"
+              ],
+              technologies: ["DHIS2", "SQL", "API Integration", "Data Modeling"],
+              metrics: {
+                scale: "National Coverage",
+                users: "10M+ Students",
+                systems: "2 National Systems"
+              },
+              featured: true
+            },
+            {
+              title: "Kenya NTD Database",
+              subtitle: "Inaugural Neglected Tropical Diseases System",
+              category: "Database Architecture",
+              description: "Built Kenya's first comprehensive NTD database and integrated it with KHIS to demonstrate the impact of WASH activities on Neglected Tropical Diseases, enabling data-driven intervention planning.",
+              impact: [
+                "First unified NTD data platform in Kenya",
+                "Integrated WASH and health outcome indicators",
+                "Enabled cross-sector analysis and advocacy",
+                "Supported Ministry of Health strategic planning"
+              ],
+              technologies: ["PostgreSQL", "DHIS2", "Python", "GIS Mapping"],
+              metrics: {
+                indicators: "50+ NTD/WASH",
+                regions: "47 Counties",
+                integration: "Full WASH-Health"
+              },
+              featured: true
+            },
+            {
+              title: "Real-Time Monitoring Dashboards",
+              subtitle: "Dynamic Program Tracking System",
+              category: "Data Visualization",
+              description: "Developed organizational dashboards with streaming updates that track live data collection activities across multiple countries, enabling real-time program planning and adaptive management.",
+              impact: [
+                "Live monitoring across 8 countries",
+                "Real-time data quality alerts",
+                "Automated reporting for stakeholders",
+                "Reduced decision-making lag by 70%"
+              ],
+              technologies: ["PowerBI", "SQL", "Python", "REST APIs"],
+              metrics: {
+                countries: "8 Countries",
+                updates: "Real-time",
+                users: "200+ Staff"
+              },
+              featured: false
+            },
+            {
+              title: "Electronic Data Collection Transformation",
+              subtitle: "Paper to Digital Migration",
+              category: "Digital Transformation",
+              description: "Led the research, piloting, and implementation of electronic data collection systems in Kenya and Pakistan, replacing paper-based systems and improving reporting efficiency by 60%.",
+              impact: [
+                "60% improvement in reporting timelines",
+                "Eliminated data entry errors",
+                "Reduced operational costs by 40%",
+                "Enabled real-time data quality checks"
+              ],
+              technologies: ["ODK", "KoBo Toolbox", "SurveyCTO", "PostgreSQL"],
+              metrics: {
+                efficiency: "+60%",
+                countries: "2 Countries",
+                surveys: "100+ Forms"
+              },
+              featured: false
+            }
+          ];
+
+          const publications = [
+            {
+              title: "Evidence-Based Approaches to School-Based Deworming Programs",
+              type: "Research Paper",
+              authors: "MEAL Team, Evidence Action",
+              year: "2023",
+              journal: "International Journal of Health Policy and Management",
+              description: "First externally-facing research paper from the MEAL team examining the effectiveness of school-based deworming interventions across multiple African contexts.",
+              tags: ["Deworming", "Public Health", "Monitoring & Evaluation", "Africa"],
+              link: "#",
+              featured: true
+            },
+            {
+              title: "Integration of WASH and NTD Data Systems: A Kenya Case Study",
+              type: "Technical Report",
+              authors: "Crown Agents & Ministry of Health Kenya",
+              year: "2021",
+              journal: "Crown Agents Technical Series",
+              description: "Comprehensive analysis of integrated WASH and NTD indicator frameworks, demonstrating improved cross-sectoral planning and resource allocation.",
+              tags: ["WASH", "NTDs", "Data Integration", "Kenya"],
+              link: "#",
+              featured: false
+            },
+            {
+              title: "Digital Transformation in Health Data Management: Lessons from Kenya and Pakistan",
+              type: "Case Study",
+              authors: "Evidence Action MEAL Team",
+              year: "2022",
+              journal: "Evidence Action Learning Series",
+              description: "Documenting the transition from paper-based to electronic data collection systems, including implementation strategies and impact analysis.",
+              tags: ["Digital Health", "Data Management", "Implementation Science"],
+              link: "#",
+              featured: false
+            },
+            {
+              title: "Building Capacity for Data-Driven Decision Making in Low-Resource Settings",
+              type: "Technical Brief",
+              authors: "Evidence Action",
+              year: "2023",
+              journal: "MEAL Practice Series",
+              description: "Framework for developing data analytics capacity in resource-constrained environments, with practical examples from Africa and Asia.",
+              tags: ["Capacity Building", "Data Analytics", "MEAL"],
+              link: "#",
+              featured: false
+            },
+            {
+              title: "Monitoring Framework for Neglected Tropical Disease Programs",
+              type: "Methodology Paper",
+              authors: "Evidence Action & WHO Collaborators",
+              year: "2022",
+              journal: "Global Health Practice",
+              description: "Standardized monitoring and evaluation framework for NTD programs, adopted by multiple implementing organizations.",
+              tags: ["NTDs", "M&E Framework", "Global Health"],
+              link: "#",
+              featured: false
+            }
+          ];
+
+          const skills = {
+            analytics: [
+              { name: "Stata", level: 95 },
+              { name: "R", level: 92 },
+              { name: "Python", level: 90 },
+              { name: "SQL", level: 95 },
+              { name: "Microsoft Excel", level: 98 }
+            ],
+            visualization: [
+              { name: "PowerBI", level: 90 },
+              { name: "Tableau", level: 85 },
+              { name: "Qlik", level: 80 },
+              { name: "ArcGIS", level: 85 }
+            ],
+            database: [
+              { name: "PostgreSQL", level: 90 },
+              { name: "MySQL", level: 90 },
+              { name: "SQLite", level: 85 },
+              { name: "DHIS2", level: 92 }
+            ],
+            technical: [
+              { name: "M&E Framework Design", level: 95 },
+              { name: "Statistical Modeling", level: 93 },
+              { name: "Evaluation Design", level: 90 },
+              { name: "Research Methodology", level: 92 }
+            ]
+          };
+
+          return (
+            <div className="portfolio">
+              <div className="progress-bar" style={{ width: `${scrollProgress}%` }} />
+
+              <nav className="nav">
+                <div className="nav-content">
+                  <div className="nav-brand">
+                    <div className="nav-initials">MA</div>
+                  </div>
+                  <div className="nav-links">
+                    {['About', 'Experience', 'Projects', 'Publications', 'Skills', 'Contact'].map((item) => (
+                      <a
+                        key={item}
+                        href={`#${item.toLowerCase()}`}
+                        className={activeSection === item.toLowerCase() ? 'active' : ''}
+                      >
+                        {item}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </nav>
+
+              <section id="hero" className="hero">
+                <div className="hero-content">
+                  <div className="hero-badge">
+                    <span className="badge-dot"></span>
+                    Available for Consulting
+                  </div>
+                  <h1 className="hero-title">
+                    Data-Driven Solutions
+                    <br />
+                    <span className="hero-title-accent">for Global Health Impact</span>
+                  </h1>
+                  <p className="hero-subtitle">
+                    MEAL Expert | Statistical Modeling | Data Analytics | Research
+                  </p>
+                  <p className="hero-description">
+                    10+ years transforming health data into actionable insights across Africa and Asia.
+                    Specialized in monitoring & evaluation frameworks, statistical programming, and
+                    large-scale data system integration.
+                  </p>
+                  <div className="hero-cta">
+                    <a href="#contact" className="btn-primary">
+                      Get in Touch
+                      <ChevronRight size={20} />
+                    </a>
+                    <a href="#projects" className="btn-secondary">
+                      View Projects
+                    </a>
+                  </div>
+                  <div className="hero-stats">
+                    <div className="stat">
+                      <div className="stat-number">13+</div>
+                      <div className="stat-label">Countries</div>
+                    </div>
+                    <div className="stat">
+                      <div className="stat-number">10+</div>
+                      <div className="stat-label">Years Experience</div>
+                    </div>
+                    <div className="stat">
+                      <div className="stat-number">50M+</div>
+                      <div className="stat-label">People Reached</div>
+                    </div>
+                    <div className="stat">
+                      <div className="stat-number">20+</div>
+                      <div className="stat-label">Programs Supported</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="hero-visual">
+                  <div className="data-orb"></div>
+                  <div className="data-particles">
+                    {[...Array(20)].map((_, i) => (
+                      <div key={i} className="particle" style={{
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
+                        animationDelay: `${Math.random() * 3}s`,
+                        animationDuration: `${3 + Math.random() * 2}s`
+                      }} />
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <section id="about" className="about">
+                <div className="container">
+                  <div className="section-header">
+                    <h2 className="section-title">About</h2>
+                    <div className="section-line"></div>
+                  </div>
+                  <div className="about-content">
+                    <div className="about-text">
+                      <h3 className="about-headline">
+                        Transforming Health Data into Impact
+                      </h3>
+                      <p>
+                        As a Planning, Monitoring, Evaluation, Accountability and Learning (P-MEAL) expert,
+                        I specialize in designing and implementing robust M&E frameworks and systems that
+                        track delivery against outputs, outcomes, and impact for global health programs.
+                      </p>
+                      <p>
+                        My work spans evidence action programs across Kenya, Uganda, Malawi, Nigeria,
+                        Sierra Leone, Pakistan, India, Liberia, Zambia, and Cameroon—reaching over 50
+                        million people through data-driven interventions in deworming, water safety,
+                        maternal health, and nutrition.
+                      </p>
+                      <div className="about-highlights">
+                        <div className="highlight">
+                          <Database className="highlight-icon" size={40} />
+                          <div>
+                            <h4>Data Architecture</h4>
+                            <p>Built national-scale databases integrated with government health information systems</p>
+                          </div>
+                        </div>
+                        <div className="highlight">
+                          <TrendingUp className="highlight-icon" size={40} />
+                          <div>
+                            <h4>Statistical Modeling</h4>
+                            <p>Advanced analytics using R, Python, Stata for impact evaluation and forecasting</p>
+                          </div>
+                        </div>
+                        <div className="highlight">
+                          <Users className="highlight-icon" size={40} />
+                          <div>
+                            <h4>Capacity Building</h4>
+                            <p>Trained 100+ staff and government teams across Africa and Asia in data management</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="about-sidebar">
+                      <div className="education-card">
+                        <h4>Education</h4>
+                        <div className="education-item">
+                          <div className="education-degree">MSc Health Economics</div>
+                          <div className="education-school">University of Nairobi</div>
+                          <div className="education-year">2018 – Current</div>
+                        </div>
+                        <div className="education-item">
+                          <div className="education-degree">BA Economics with IT</div>
+                          <div className="education-school">Maseno University</div>
+                          <div className="education-year">2006 – 2010</div>
+                        </div>
+                      </div>
+                      <div className="certifications-card">
+                        <h4>Recent Certifications</h4>
+                        <ul>
+                          <li>Results-Based Project Management (Wits University, 2021)</li>
+                          <li>Mastering Data Analysis in Excel (Duke University, 2020)</li>
+                          <li>Health Financing for UHC (WHO, 2019)</li>
+                          <li>Measuring Health Outcomes (JPAL, 2017)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section id="experience" className="experience">
+                <div className="container">
+                  <div className="section-header">
+                    <h2 className="section-title">Experience</h2>
+                    <div className="section-line"></div>
+                  </div>
+                  <div className="bento-grid">
+                    {experiences.map((exp, index) => (
+                      <div key={index} className={`bento-card ${exp.size} ${exp.current ? 'current' : ''}`}>
+                        <div className="experience-card">
+                          {exp.current && (
+                            <div className="current-badge">
+                              <span className="current-dot"></span>
+                              Current Position
+                            </div>
+                          )}
+                          <div className="experience-header">
+                            <div>
+                              <h3 className="experience-title">{exp.title}</h3>
+                              <div className="experience-company">{exp.company}</div>
+                              <div className="experience-meta">
+                                <span className="experience-period">{exp.period}</span>
+                                <span className="experience-location">{exp.location}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <p className="experience-description">{exp.description}</p>
+                          {exp.size !== 'small' && (
+                            <div className="experience-achievements">
+                              <h4>Key Achievements:</h4>
+                              <ul>
+                                {exp.achievements.map((achievement, i) => (
+                                  <li key={i}>{achievement}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                          <div className="experience-tech">
+                            {exp.tech.map((tech, i) => (
+                              <span key={i} className="tech-tag">{tech}</span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <section id="projects" className="projects">
+                <div className="container">
+                  <div className="section-header">
+                    <h2 className="section-title">Featured Projects & Case Studies</h2>
+                    <div className="section-line"></div>
+                    <p className="section-subtitle">
+                      Transformative data systems and research initiatives driving evidence-based decision-making
+                    </p>
+                  </div>
+                  <div className="projects-grid">
+                    {projects.map((project, index) => (
+                      <div key={index} className={`project-card ${project.featured ? 'featured' : ''}`}>
+                        {project.featured && (
+                          <div className="project-badge">
+                            <Award size={16} />
+                            Featured Project
+                          </div>
+                        )}
+                        <div className="project-header">
+                          <div className="project-category">{project.category}</div>
+                          <h3 className="project-title">{project.title}</h3>
+                          <div className="project-subtitle">{project.subtitle}</div>
+                        </div>
+                        <p className="project-description">{project.description}</p>
+                        <div className="project-impact">
+                          <h4>Impact:</h4>
+                          <ul>
+                            {project.impact.map((item, i) => (
+                              <li key={i}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="project-metrics">
+                          {Object.entries(project.metrics).map(([key, value]) => (
+                            <div key={key} className="metric">
+                              <div className="metric-value">{value}</div>
+                              <div className="metric-label">{key}</div>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="project-tech">
+                          {project.technologies.map((tech, i) => (
+                            <span key={i} className="tech-badge">{tech}</span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <section id="publications" className="publications">
+                <div className="container">
+                  <div className="section-header">
+                    <h2 className="section-title">Publications & Research</h2>
+                    <div className="section-line"></div>
+                    <p className="section-subtitle">
+                      Contributing to the global knowledge base on monitoring, evaluation, and health data systems
+                    </p>
+                  </div>
+                  <div className="publications-list">
+                    {publications.map((pub, index) => (
+                      <div key={index} className={`publication-card ${pub.featured ? 'featured' : ''}`}>
+                        {pub.featured && (
+                          <div className="pub-badge">
+                            <Award size={14} />
+                            Featured Publication
+                          </div>
+                        )}
+                        <div className="pub-header">
+                          <div className="pub-type">{pub.type}</div>
+                          <h3 className="pub-title">{pub.title}</h3>
+                          <div className="pub-meta">
+                            <span className="pub-authors">{pub.authors}</span>
+                            <span className="pub-separator">•</span>
+                            <span className="pub-journal">{pub.journal}</span>
+                            <span className="pub-separator">•</span>
+                            <span className="pub-year">
+                              <Calendar size={14} />
+                              {pub.year}
+                            </span>
+                          </div>
+                        </div>
+                        <p className="pub-description">{pub.description}</p>
+                        <div className="pub-footer">
+                          <div className="pub-tags">
+                            {pub.tags.map((tag, i) => (
+                              <span key={i} className="pub-tag">
+                                <Tag size={12} />
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          <a href={pub.link} className="pub-link">
+                            View Publication
+                            <ExternalLink size={16} />
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <section id="skills" className="skills">
+                <div className="container">
+                  <div className="section-header">
+                    <h2 className="section-title">Technical Expertise</h2>
+                    <div className="section-line"></div>
+                  </div>
+                  <div className="skills-grid">
+                    <div className="skill-category">
+                      <h3 className="skill-category-title">Analytics & Programming</h3>
+                      <div className="skill-list">
+                        {skills.analytics.map((skill, i) => (
+                          <div key={i} className="skill-item">
+                            <div className="skill-header">
+                              <span className="skill-name">{skill.name}</span>
+                              <span className="skill-level">{skill.level}%</span>
+                            </div>
+                            <div className="skill-bar">
+                              <div className="skill-fill" style={{ width: `${skill.level}%` }} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="skill-category">
+                      <h3 className="skill-category-title">Data Visualization</h3>
+                      <div className="skill-list">
+                        {skills.visualization.map((skill, i) => (
+                          <div key={i} className="skill-item">
+                            <div className="skill-header">
+                              <span className="skill-name">{skill.name}</span>
+                              <span className="skill-level">{skill.level}%</span>
+                            </div>
+                            <div className="skill-bar">
+                              <div className="skill-fill" style={{ width: `${skill.level}%` }} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="skill-category">
+                      <h3 className="skill-category-title">Database Management</h3>
+                      <div className="skill-list">
+                        {skills.database.map((skill, i) => (
+                          <div key={i} className="skill-item">
+                            <div className="skill-header">
+                              <span className="skill-name">{skill.name}</span>
+                              <span className="skill-level">{skill.level}%</span>
+                            </div>
+                            <div className="skill-bar">
+                              <div className="skill-fill" style={{ width: `${skill.level}%` }} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="skill-category">
+                      <h3 className="skill-category-title">MEAL & Research</h3>
+                      <div className="skill-list">
+                        {skills.technical.map((skill, i) => (
+                          <div key={i} className="skill-item">
+                            <div className="skill-header">
+                              <span className="skill-name">{skill.name}</span>
+                              <span className="skill-level">{skill.level}%</span>
+                            </div>
+                            <div className="skill-bar">
+                              <div className="skill-fill" style={{ width: `${skill.level}%` }} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section id="contact" className="contact">
+                <div className="container">
+                  <div className="section-header">
+                    <h2 className="section-title">Let's Connect</h2>
+                    <div className="section-line"></div>
+                    <p className="section-subtitle">
+                      Open to consulting opportunities, collaborations, and speaking engagements
+                    </p>
+                  </div>
+                  <div className="contact-content">
+                    <div className="contact-info">
+                      <h3>Get in Touch</h3>
+                      <p>
+                        I'm always interested in discussing data-driven approaches to global health challenges,
+                        MEAL framework development, and innovative data system solutions.
+                      </p>
+                      <div className="contact-links">
+                        <a href="mailto:your.email@example.com" className="contact-link">
+                          <Mail size={24} />
+                          <span>your.email@example.com</span>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" className="contact-link" target="_blank" rel="noopener noreferrer">
+                          <Linkedin size={24} />
+                          <span>linkedin.com/in/yourprofile</span>
+                        </a>
+                        <a href="https://github.com/yourprofile" className="contact-link" target="_blank" rel="noopener noreferrer">
+                          <Github size={24} />
+                          <span>github.com/yourprofile</span>
+                        </a>
+                        <a href="https://yourwebsite.com" className="contact-link" target="_blank" rel="noopener noreferrer">
+                          <Globe size={24} />
+                          <span>yourwebsite.com</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="contact-cta">
+                      <div className="cta-card">
+                        <h4>Available for:</h4>
+                        <ul>
+                          <li>MEAL Framework Development</li>
+                          <li>Data System Integration Consulting</li>
+                          <li>Statistical Analysis & Modeling</li>
+                          <li>Capacity Building & Training</li>
+                          <li>Research Collaborations</li>
+                        </ul>
+                        <a href="mailto:your.email@example.com" className="btn-primary">
+                          Send Message
+                          <ChevronRight size={20} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <footer className="footer">
+                <div className="container">
+                  <div className="footer-content">
+                    <div className="footer-brand">
+                      <div className="footer-initials">MA</div>
+                      <p>Data-Driven Solutions for Global Health Impact</p>
+                    </div>
+                    <div className="footer-links">
+                      <a href="#about">About</a>
+                      <a href="#experience">Experience</a>
+                      <a href="#projects">Projects</a>
+                      <a href="#publications">Publications</a>
+                      <a href="#skills">Skills</a>
+                      <a href="#contact">Contact</a>
+                    </div>
+                    <div className="footer-social">
+                      <a href="mailto:your.email@example.com" aria-label="Email">
+                        <Mail size={20} />
+                      </a>
+                      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <Linkedin size={20} />
+                      </a>
+                      <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <Github size={20} />
+                      </a>
+                      <a href="https://yourwebsite.com" target="_blank" rel="noopener noreferrer" aria-label="Website">
+                        <Globe size={20} />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="footer-bottom">
+                    <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
+                    <p>Built with precision and passion for data excellence</p>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          );
+        };
+
+        // Render the app
+        try {
+          console.log('Rendering Portfolio component...');
+          const root = ReactDOM.createRoot(document.getElementById('root'));
+          root.render(<Portfolio />);
+          console.log('Portfolio rendered successfully');
+        } catch (error) {
+          console.error('Error rendering portfolio:', error);
+          document.getElementById('root').innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; 
+                        background: linear-gradient(135deg, #0a1628 0%, #0f1e33 50%, #0a1628 100%); 
+                        color: #06b6d4; font-family: sans-serif; padding: 2rem; text-align: center;">
+              <div>
+                <h1>Error Loading Portfolio</h1>
+                <p style="color: #94a3b8;">Please check the browser console for details.</p>
+                <p style="color: #ef4444; margin-top: 1rem;">${error.message}</p>
+              </div>
+            </div>
+          `;
+        }
+    </script>
+
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        .portfolio {
+          background: linear-gradient(135deg, #0a1628 0%, #0f1e33 50%, #0a1628 100%);
+          color: #e2e8f0;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          min-height: 100vh;
+          overflow-x: hidden;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #06b6d4, #14b8a6);
+          z-index: 9999;
+          transition: width 0.1s ease-out;
+        }
+
+        /* Navigation */
+        .nav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          background: rgba(10, 22, 40, 0.95);
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+          padding: 1rem 0;
+          z-index: 1000;
+          animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+          from {
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        .nav-content {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .nav-brand {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .nav-initials {
+          width: 45px;
+          height: 45px;
+          background: linear-gradient(135deg, #06b6d4, #14b8a6);
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Space Mono', monospace;
+          font-weight: 700;
+          font-size: 1.1rem;
+          color: #0a1628;
+          box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .nav-links {
+          display: flex;
+          gap: 2rem;
+        }
+
+        .nav-links a {
+          color: #94a3b8;
+          text-decoration: none;
+          font-size: 0.95rem;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          position: relative;
+          padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: linear-gradient(90deg, #06b6d4, #14b8a6);
+          transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+          color: #06b6d4;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+          width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          padding: 120px 2rem 80px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hero-content {
+          max-width: 1400px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+          animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          background: rgba(6, 182, 212, 0.1);
+          border: 1px solid rgba(6, 182, 212, 0.3);
+          border-radius: 50px;
+          color: #06b6d4;
+          font-size: 0.875rem;
+          font-weight: 500;
+          margin-bottom: 2rem;
+          animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .badge-dot {
+          width: 8px;
+          height: 8px;
+          background: #06b6d4;
+          border-radius: 50%;
+          animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.5;
+            transform: scale(0.8);
+          }
+        }
+
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .hero-title {
+          font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+          font-size: 4.5rem;
+          font-weight: 800;
+          line-height: 1.1;
+          margin-bottom: 1.5rem;
+          background: linear-gradient(135deg, #ffffff, #94a3b8);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-title-accent {
+          display: block;
+          background: linear-gradient(135deg, #06b6d4, #14b8a6);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .hero-subtitle {
+          font-size: 1.5rem;
+          color: #14b8a6;
+          margin-bottom: 1.5rem;
+          font-weight: 600;
+          animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-description {
+          font-size: 1.125rem;
+          color: #cbd5e1;
+          max-width: 700px;
+          line-height: 1.8;
+          margin-bottom: 2.5rem;
+          animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .hero-cta {
+          display: flex;
+          gap: 1.5rem;
+          margin-bottom: 4rem;
+          animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn-primary {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 1rem 2rem;
+          background: linear-gradient(135deg, #06b6d4, #14b8a6);
+          color: #0a1628;
+          text-decoration: none;
+          border-radius: 12px;
+          font-weight: 600;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 30px rgba(6, 182, 212, 0.5);
+        }
+
+        .btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          padding: 1rem 2rem;
+          background: transparent;
+          color: #06b6d4;
+          text-decoration: none;
+          border: 2px solid #06b6d4;
+          border-radius: 12px;
+          font-weight: 600;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+          background: rgba(6, 182, 212, 0.1);
+          transform: translateY(-2px);
+        }
+
+        .hero-stats {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+          max-width: 800px;
+          animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .stat {
+          text-align: center;
+          padding: 1.5rem;
+          background: rgba(6, 182, 212, 0.05);
+          border: 1px solid rgba(6, 182, 212, 0.1);
+          border-radius: 12px;
+          transition: all 0.3s ease;
+        }
+
+        .stat:hover {
+          background: rgba(6, 182, 212, 0.1);
+          border-color: rgba(6, 182, 212, 0.3);
+          transform: translateY(-5px);
+        }
+
+        .stat-number {
+          font-family: 'Space Mono', monospace;
+          font-size: 2.5rem;
+          font-weight: 700;
+          background: linear-gradient(135deg, #06b6d4, #14b8a6);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+          font-size: 0.875rem;
+          color: #94a3b8;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .hero-visual {
+          position: absolute;
+          right: -10%;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 600px;
+          height: 600px;
+          pointer-events: none;
+        }
+
+        .data-orb {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+          border-radius: 50%;
+          animation: orbPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes orbPulse {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 0.3;
+          }
+          50% {
+            transform: scale(1.2);
+            opacity: 0.6;
+          }
+        }
+
+        .data-particles {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+
+        .particle {
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          background: #06b6d4;
+          border-radius: 50%;
+          animation: particleFloat linear infinite;
+        }
+
+        @keyframes particleFloat {
+          0% {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(-100px) scale(0);
+            opacity: 0;
+          }
+        }
+
+        /* Container */
+        .container {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        /* Section Header */
+        .section-header {
+          margin-bottom: 4rem;
+          text-align: center;
+        }
+
+        .section-title {
+          font-family: 'Outfit', sans-serif;
+          font-size: 3rem;
+          font-weight: 800;
+          background: linear-gradient(135deg, #ffffff, #94a3b8);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 1rem;
+        }
+
+        .section-line {
+          width: 80px;
+          height: 4px;
+          background: linear-gradient(90deg, #06b6d4, #14b8a6);
+          margin: 0 auto 1.5rem;
+          border-radius: 2px;
+        }
+
+        .section-subtitle {
+          font-size: 1.125rem;
+          color: #94a3b8;
+          max-width: 700px;
+          margin: 0 auto;
+          line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+          padding: 100px 0;
+          position: relative;
+        }
+
+        .about-content {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          gap: 4rem;
+        }
+
+        .about-text h3 {
+          font-family: 'Outfit', sans-serif;
+          font-size: 2rem;
+          font-weight: 700;
+          color: #06b6d4;
+          margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+          font-size: 1.125rem;
+          line-height: 1.8;
+          color: #cbd5e1;
+          margin-bottom: 1.5rem;
+        }
+
+        .about-highlights {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          margin-top: 2rem;
+        }
+
+        .highlight {
+          display: flex;
+          gap: 1.5rem;
+          padding: 1.5rem;
+          background: rgba(6, 182, 212, 0.05);
+          border: 1px solid rgba(6, 182, 212, 0.1);
+          border-radius: 12px;
+          transition: all 0.3s ease;
+        }
+
+        .highlight:hover {
+          background: rgba(6, 182, 212, 0.1);
+          border-color: rgba(6, 182, 212, 0.3);
+          transform: translateX(10px);
+        }
+
+        .highlight-icon {
+          width: 40px;
+          height: 40px;
+          color: #06b6d4;
+          flex-shrink: 0;
+        }
+
+        .highlight h4 {
+          font-size: 1.25rem;
+          color: #e2e8f0;
+          margin-bottom: 0.5rem;
+        }
+
+        .highlight p {
+          font-size: 0.95rem;
+          color: #94a3b8;
+          margin: 0;
+        }
+
+        .about-sidebar {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .education-card,
+        .certifications-card {
+          background: rgba(6, 182, 212, 0.05);
+          border: 1px solid rgba(6, 182, 212, 0.1);
+          border-radius: 12px;
+          padding: 2rem;
+        }
+
+        .education-card h4,
+        .certifications-card h4 {
+          font-size: 1.25rem;
+          color: #06b6d4;
+          margin-bottom: 1.5rem;
+        }
+
+        .education-item {
+          margin-bottom: 1.5rem;
+        }
+
+        .education-item:last-child {
+          margin-bottom: 0;
+        }
+
+        .education-degree {
+          font-weight: 600;
+          color: #e2e8f0;
+          margin-bottom: 0.25rem;
+        }
+
+        .education-school {
+          color: #94a3b8;
+          font-size: 0.95rem;
+          margin-bottom: 0.25rem;
+        }
+
+        .education-year {
+          color: #64748b;
+          font-size: 0.875rem;
+        }
+
+        .certifications-card ul {
+          list-style: none;
+        }
+
+        .certifications-card li {
+          color: #cbd5e1;
+          font-size: 0.95rem;
+          line-height: 1.6;
+          margin-bottom: 0.75rem;
+          padding-left: 1.5rem;
+          position: relative;
+        }
+
+        .certifications-card li::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0.6em;
+          width: 6px;
+          height: 6px;
+          background: #06b6d4;
+          border-radius: 50%;
+        }
+
+        /* Experience Section - Bento Box */
+        .experience {
+          padding: 100px 0;
+          background: rgba(6, 182, 212, 0.02);
+        }
+
+        .bento-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+          grid-auto-rows: minmax(280px, auto);
+        }
+
+        .bento-card {
+          position: relative;
+          opacity: 0;
+          animation: fadeInScale 0.8s ease-out forwards;
+        }
+
+        .bento-card:nth-child(1) { animation-delay: 0.1s; }
+        .bento-card:nth-child(2) { animation-delay: 0.2s; }
+        .bento-card:nth-child(3) { animation-delay: 0.3s; }
+        .bento-card:nth-child(4) { animation-delay: 0.4s; }
+        .bento-card:nth-child(5) { animation-delay: 0.5s; }
+        .bento-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Bento box sizing */
+        .bento-card.large {
+          grid-column: span 2;
+          grid-row: span 2;
+        }
+
+        .bento-card.medium {
+          grid-column: span 2;
+          grid-row: span 1;
+        }
+
+        .bento-card.small {
+          grid-column: span 1;
+          grid-row: span 1;
+        }
+
+        .bento-card .experience-card {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .current-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          background: rgba(34, 197, 94, 0.1);
+          border: 1px solid rgba(34, 197, 94, 0.3);
+          border-radius: 50px;
+          color: #22c55e;
+          font-size: 0.875rem;
+          font-weight: 600;
+          margin-bottom: 1.5rem;
+          width: fit-content;
+        }
+
+        .current-dot {
+          width: 8px;
+          height: 8px;
+          background: #22c55e;
+          border-radius: 50%;
+          animation: pulse 2s infinite;
+        }
+
+        .experience-card {
+          background: rgba(6, 182, 212, 0.05);
+          border: 1px solid rgba(6, 182, 212, 0.1);
+          border-radius: 16px;
+          padding: 2rem;
+          transition: all 0.4s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .experience-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: linear-gradient(90deg, #06b6d4, #14b8a6);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.4s ease;
+        }
+
+        .experience-card:hover {
+          background: rgba(6, 182, 212, 0.1);
+          border-color: rgba(6, 182, 212, 0.3);
+          transform: translateY(-5px);
+          box-shadow: 0 10px 40px rgba(6, 182, 212, 0.2);
+        }
+
+        .experience-card:hover::before {
+          transform: scaleX(1);
+        }
+
+        .bento-card.current .experience-card {
+          background: rgba(6, 182, 212, 0.08);
+          border-color: rgba(6, 182, 212, 0.2);
+          border-width: 2px;
+        }
+
+        .experience-title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #e2e8f0;
+          margin-bottom: 0.5rem;
+          line-height: 1.3;
+        }
+
+        .bento-card.small .experience-title {
+          font-size: 1.25rem;
+        }
+
+        .experience-company {
+          font-size: 1.125rem;
+          color: #06b6d4;
+          font-weight: 600;
+          margin-bottom: 0.75rem;
+        }
+
+        .bento-card.small .experience-company {
+          font-size: 1rem;
+        }
+
+        .experience-meta {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+          font-size: 0.875rem;
+          color: #94a3b8;
+        }
+
+        .experience-period,
+        .experience-location {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .experience-description {
+          color: #cbd5e1;
+          line-height: 1.7;
+          margin-bottom: 1.5rem;
+          font-size: 0.95rem;
+        }
+
+        .bento-card.small .experience-description {
+          font-size: 0.875rem;
+          margin-bottom: 1rem;
+        }
+
+        .experience-achievements {
+          margin-bottom: 1.5rem;
+          flex: 1;
+        }
+
+        .experience-achievements h4 {
+          font-size: 1rem;
+          color: #14b8a6;
+          margin-bottom: 0.75rem;
+        }
+
+        .experience-achievements ul {
+          list-style: none;
+        }
+
+        .experience-achievements li {
+          color: #cbd5e1;
+          font-size: 0.95rem;
+          line-height: 1.6;
+          margin-bottom: 0.5rem;
+          padding-left: 1.5rem;
+          position: relative;
+        }
+
+        .bento-card.large .experience-achievements li {
+          font-size: 0.95rem;
+        }
+
+        .experience-achievements li::before {
+          content: '→';
+          position: absolute;
+          left: 0;
+          color: #06b6d4;
+          font-weight: bold;
+        }
+
+        .experience-tech {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-top: auto;
+        }
+
+        .tech-tag {
+          padding: 0.375rem 0.75rem;
+          background: rgba(6, 182, 212, 0.1);
+          border: 1px solid rgba(6, 182, 212, 0.2);
+          border-radius: 6px;
+          color: #06b6d4;
+          font-size: 0.875rem;
+          font-weight: 500;
+        }
+
+        .bento-card.small .tech-tag {
+          font-size: 0.75rem;
+          padding: 0.25rem 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+          padding: 100px 0;
+        }
+
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+
+        .project-card {
+          background: rgba(6, 182, 212, 0.05);
+          border: 1px solid rgba(6, 182, 212, 0.1);
+          border-radius: 16px;
+          padding: 2.5rem;
+          transition: all 0.4s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .project-card.featured {
+          grid-column: span 2;
+          background: rgba(6, 182, 212, 0.08);
+          border-color: rgba(6, 182, 212, 0.3);
+        }
+
+        .project-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 6px;
+          background: linear-gradient(90deg, #06b6d4, #14b8a6);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.4s ease;
+        }
+
+        .project-card:hover {
+          background: rgba(6, 182, 212, 0.12);
+          border-color: rgba(6, 182, 212, 0.4);
+          transform: translateY(-8px);
+          box-shadow: 0 15px 50px rgba(6, 182, 212, 0.3);
+        }
+
+        .project-card:hover::before {
+          transform: scaleX(1);
+        }
+
+        .project-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          background: rgba(255, 193, 7, 0.1);
+          border: 1px solid rgba(255, 193, 7, 0.3);
+          border-radius: 50px;
+          color: #ffc107;
+          font-size: 0.875rem;
+          font-weight: 600;
+          margin-bottom: 1.5rem;
+        }
+
+        .project-header {
+          margin-bottom: 1.5rem;
+        }
+
+        .project-category {
+          display: inline-block;
+          padding: 0.375rem 0.75rem;
+          background: rgba(20, 184, 166, 0.1);
+          border: 1px solid rgba(20, 184, 166, 0.2);
+          border-radius: 6px;
+          color: #14b8a6;
+          font-size: 0.875rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .project-title {
+          font-family: 'Outfit', sans-serif;
+          font-size: 1.75rem;
+          font-weight: 700;
+          color: #e2e8f0;
+          margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+          font-size: 1rem;
+          color: #94a3b8;
+        }
+
+        .project-description {
+          color: #cbd5e1;
+          line-height: 1.8;
+          margin-bottom: 1.5rem;
+        }
+
+        .project-impact h4 {
+          font-size: 1rem;
+          color: #14b8a6;
+          margin-bottom: 0.75rem;
+        }
+
+        .project-impact ul {
+          list-style: none;
+          margin-bottom: 1.5rem;
+        }
+
+        .project-impact li {
+          color: #cbd5e1;
+          font-size: 0.95rem;
+          line-height: 1.6;
+          margin-bottom: 0.5rem;
+          padding-left: 1.5rem;
+          position: relative;
+        }
+
+        .project-impact li::before {
+          content: '✓';
+          position: absolute;
+          left: 0;
+          color: #14b8a6;
+          font-weight: bold;
+        }
+
+        .project-metrics {
+          display: flex;
+          gap: 2rem;
+          margin-bottom: 1.5rem;
+          padding: 1.5rem;
+          background: rgba(6, 182, 212, 0.05);
+          border-radius: 12px;
+        }
+
+        .metric {
+          text-align: center;
+        }
+
+        .metric-value {
+          font-family: 'Space Mono', monospace;
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #06b6d4;
+          margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+          font-size: 0.875rem;
+          color: #94a3b8;
+          text-transform: capitalize;
+        }
+
+        .project-tech {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        .tech-badge {
+          padding: 0.375rem 0.75rem;
+          background: rgba(6, 182, 212, 0.1);
+          border: 1px solid rgba(6, 182, 212, 0.2);
+          border-radius: 6px;
+          color: #06b6d4;
+          font-size: 0.875rem;
+          font-weight: 500;
+        }
+
+        /* Publications Section */
+        .publications {
+          padding: 100px 0;
+          background: rgba(6, 182, 212, 0.02);
+        }
+
+        .publications-list {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .publication-card {
+          background: rgba(6, 182, 212, 0.05);
+          border: 1px solid rgba(6, 182, 212, 0.1);
+          border-radius: 16px;
+          padding: 2.5rem;
+          transition: all 0.4s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .publication-card.featured {
+          background: rgba(6, 182, 212, 0.08);
+          border-color: rgba(6, 182, 212, 0.3);
+          border-width: 2px;
+        }
+
+        .publication-card::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 6px;
+          background: linear-gradient(180deg, #06b6d4, #14b8a6);
+          transform: scaleY(0);
+          transform-origin: top;
+          transition: transform 0.4s ease;
+        }
+
+        .publication-card:hover {
+          background: rgba(6, 182, 212, 0.12);
+          border-color: rgba(6, 182, 212, 0.4);
+          transform: translateX(10px);
+          box-shadow: -10px 10px 40px rgba(6, 182, 212, 0.2);
+        }
+
+        .publication-card:hover::before {
+          transform: scaleY(1);
+        }
+
+        .pub-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          background: rgba(255, 193, 7, 0.1);
+          border: 1px solid rgba(255, 193, 7, 0.3);
+          border-radius: 50px;
+          color: #ffc107;
+          font-size: 0.875rem;
+          font-weight: 600;
+          margin-bottom: 1.5rem;
+        }
+
+        .pub-header {
+          margin-bottom: 1.5rem;
+        }
+
+        .pub-type {
+          display: inline-block;
+          padding: 0.375rem 0.75rem;
+          background: rgba(20, 184, 166, 0.1);
+          border: 1px solid rgba(20, 184, 166, 0.2);
+          border-radius: 6px;
+          color: #14b8a6;
+          font-size: 0.875rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .pub-title {
+          font-family: 'Outfit', sans-serif;
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #e2e8f0;
+          margin-bottom: 0.75rem;
+          line-height: 1.4;
+        }
+
+        .pub-meta {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 0.75rem;
+          font-size: 0.95rem;
+          color: #94a3b8;
+        }
+
+        .pub-authors {
+          font-weight: 500;
+          color: #cbd5e1;
+        }
+
+        .pub-separator {
+          color: #64748b;
+        }
+
+        .pub-journal {
+          font-style: italic;
+        }
+
+        .pub-year {
+          display: flex;
+          align-items: center;
+          gap: 0.375rem;
+        }
+
+        .pub-description {
+          color: #cbd5e1;
+          line-height: 1.8;
+          margin-bottom: 1.5rem;
+        }
+
+        .pub-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .pub-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        .pub-tag {
+          display: flex;
+          align-items: center;
+          gap: 0.375rem;
+          padding: 0.375rem 0.75rem;
+          background: rgba(6, 182, 212, 0.1);
+          border: 1px solid rgba(6, 182, 212, 0.2);
+          border-radius: 6px;
+          color: #06b6d4;
+          font-size: 0.875rem;
+        }
+
+        .pub-link {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.75rem 1.5rem;
+          background: rgba(6, 182, 212, 0.1);
+          border: 1px solid rgba(6, 182, 212, 0.3);
+          border-radius: 8px;
+          color: #06b6d4;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 0.95rem;
+          transition: all 0.3s ease;
+        }
+
+        .pub-link:hover {
+          background: rgba(6, 182, 212, 0.2);
+          border-color: rgba(6, 182, 212, 0.5);
+          transform: translateX(5px);
+        }
+
+        /* Skills Section */
+        .skills {
+          padding: 100px 0;
+        }
+
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 3rem;
+        }
+
+        .skill-category {
+          background: rgba(6, 182, 212, 0.05);
+          border: 1px solid rgba(6, 182, 212, 0.1);
+          border-radius: 16px;
+          padding: 2.5rem;
+          transition: all 0.4s ease;
+        }
+
+        .skill-category:hover {
+          background: rgba(6, 182, 212, 0.08);
+          border-color: rgba(6, 182, 212, 0.3);
+          transform: translateY(-5px);
+          box-shadow: 0 10px 40px rgba(6, 182, 212, 0.2);
+        }
+
+        .skill-category-title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #06b6d4;
+          margin-bottom: 2rem;
+        }
+
+        .skill-list {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .skill-item {
+          width: 100%;
+        }
+
+        .skill-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.75rem;
+        }
+
+        .skill-name {
+          font-weight: 600;
+          color: #e2e8f0;
+          font-size: 1rem;
+        }
+
+        .skill-level {
+          font-family: 'Space Mono', monospace;
+          color: #14b8a6;
+          font-size: 0.95rem;
+          font-weight: 600;
+        }
+
+        .skill-bar {
+          height: 8px;
+          background: rgba(6, 182, 212, 0.1);
+          border-radius: 4px;
+          overflow: hidden;
+        }
+
+        .skill-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #06b6d4, #14b8a6);
+          border-radius: 4px;
+          transition: width 1s ease-out;
+          box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        /* Contact Section */
+        .contact {
+          padding: 100px 0;
+          background: rgba(6, 182, 212, 0.02);
+        }
+
+        .contact-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+        }
+
+        .contact-info h3 {
+          font-family: 'Outfit', sans-serif;
+          font-size: 2rem;
+          font-weight: 700;
+          color: #06b6d4;
+          margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+          font-size: 1.125rem;
+          line-height: 1.8;
+          color: #cbd5e1;
+          margin-bottom: 2rem;
+        }
+
+        .contact-links {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .contact-link {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem;
+          background: rgba(6, 182, 212, 0.05);
+          border: 1px solid rgba(6, 182, 212, 0.1);
+          border-radius: 12px;
+          color: #cbd5e1;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+          background: rgba(6, 182, 212, 0.1);
+          border-color: rgba(6, 182, 212, 0.3);
+          transform: translateX(10px);
+          color: #06b6d4;
+        }
+
+        .contact-link svg {
+          color: #06b6d4;
+          flex-shrink: 0;
+        }
+
+        .cta-card {
+          background: rgba(6, 182, 212, 0.05);
+          border: 1px solid rgba(6, 182, 212, 0.1);
+          border-radius: 16px;
+          padding: 2.5rem;
+        }
+
+        .cta-card h4 {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #e2e8f0;
+          margin-bottom: 1.5rem;
+        }
+
+        .cta-card ul {
+          list-style: none;
+          margin-bottom: 2rem;
+        }
+
+        .cta-card li {
+          color: #cbd5e1;
+          font-size: 1rem;
+          line-height: 1.8;
+          margin-bottom: 0.75rem;
+          padding-left: 1.5rem;
+          position: relative;
+        }
+
+        .cta-card li::before {
+          content: '→';
+          position: absolute;
+          left: 0;
+          color: #06b6d4;
+          font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+          background: rgba(6, 182, 212, 0.03);
+          border-top: 1px solid rgba(6, 182, 212, 0.1);
+          padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr;
+          gap: 3rem;
+          margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .footer-initials {
+          width: 60px;
+          height: 60px;
+          background: linear-gradient(135deg, #06b6d4, #14b8a6);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Space Mono', monospace;
+          font-weight: 700;
+          font-size: 1.5rem;
+          color: #0a1628;
+          box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .footer-brand p {
+          color: #94a3b8;
+          line-height: 1.6;
+        }
+
+        .footer-links {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .footer-links a {
+          color: #94a3b8;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+          color: #06b6d4;
+          transform: translateX(5px);
+        }
+
+        .footer-social {
+          display: flex;
+          gap: 1rem;
+        }
+
+        .footer-social a {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(6, 182, 212, 0.1);
+          border: 1px solid rgba(6, 182, 212, 0.2);
+          border-radius: 10px;
+          color: #06b6d4;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+          background: rgba(6, 182, 212, 0.2);
+          border-color: rgba(6, 182, 212, 0.4);
+          transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+          text-align: center;
+          padding-top: 2rem;
+          border-top: 1px solid rgba(6, 182, 212, 0.1);
+        }
+
+        .footer-bottom p {
+          color: #64748b;
+          font-size: 0.875rem;
+          margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+          .hero-title {
+            font-size: 3.5rem;
+          }
+
+          .bento-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+
+          .bento-card.large {
+            grid-column: span 3;
+            grid-row: span 1;
+          }
+
+          .bento-card.medium {
+            grid-column: span 3;
+          }
+
+          .bento-card.small {
+            grid-column: span 1;
+          }
+
+          .projects-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .project-card.featured {
+            grid-column: span 1;
+          }
+        }
+
+        @media (max-width: 968px) {
+          .nav-links {
+            display: none;
+          }
+
+          .hero-title {
+            font-size: 2.5rem;
+          }
+
+          .hero-stats {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .about-content {
+            grid-template-columns: 1fr;
+          }
+
+          .bento-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+
+          .bento-card.large,
+          .bento-card.medium,
+          .bento-card.small {
+            grid-column: span 1;
+            grid-row: span 1;
+          }
+
+          .skills-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .contact-content {
+            grid-template-columns: 1fr;
+          }
+
+          .footer-content {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .hero-title {
+            font-size: 2rem;
+          }
+
+          .hero-cta {
+            flex-direction: column;
+          }
+
+          .section-title {
+            font-size: 2rem;
+          }
+        }
+    </style>
+</body>
+</html>
