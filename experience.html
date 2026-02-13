@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Experience - MEAL, Data Analytics, Statistical Modeling">
+    <title>Professional Experience - Data Analytics Portfolio</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a1628 0%, #0f1e33 50%, #0a1628 100%);
+            color: #e2e8f0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+            padding: 1rem 0;
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-initials {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #06b6d4, #14b8a6);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #0a1628;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #06b6d4, #14b8a6);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #06b6d4;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 150px 0 80px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 50px;
+            color: #06b6d4;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .page-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #06b6d4, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Experience Section - Bento Box */
+        .experience {
+            padding-bottom: 100px;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            grid-auto-rows: minmax(280px, auto);
+        }
+
+        .bento-card {
+            position: relative;
+            opacity: 0;
+            animation: fadeInScale 0.8s ease-out forwards;
+        }
+
+        .bento-card:nth-child(1) { animation-delay: 0.1s; }
+        .bento-card:nth-child(2) { animation-delay: 0.2s; }
+        .bento-card:nth-child(3) { animation-delay: 0.3s; }
+        .bento-card:nth-child(4) { animation-delay: 0.4s; }
+        .bento-card:nth-child(5) { animation-delay: 0.5s; }
+        .bento-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Bento box sizing */
+        .bento-card.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .bento-card.medium {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .bento-card.small {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .bento-card .experience-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .current-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 50px;
+            color: #22c55e;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            width: fit-content;
+        }
+
+        .current-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+        }
+
+        .experience-card {
+            background: rgba(6, 182, 212, 0.05);
+            border: 1px solid rgba(6, 182, 212, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #06b6d4, #14b8a6);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .experience-card:hover {
+            background: rgba(6, 182, 212, 0.1);
+            border-color: rgba(6, 182, 212, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(6, 182, 212, 0.2);
+        }
+
+        .experience-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .bento-card.current .experience-card {
+            background: rgba(6, 182, 212, 0.08);
+            border-color: rgba(6, 182, 212, 0.2);
+            border-width: 2px;
+        }
+
+        .experience-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .bento-card.small .experience-title {
+            font-size: 1.25rem;
+        }
+
+        .experience-company {
+            font-size: 1.125rem;
+            color: #06b6d4;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .bento-card.small .experience-company {
+            font-size: 1rem;
+        }
+
+        .experience-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        .experience-period,
+        .experience-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .experience-description {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .bento-card.small .experience-description {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-achievements {
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .experience-achievements h4 {
+            font-size: 1rem;
+            color: #14b8a6;
+            margin-bottom: 0.75rem;
+        }
+
+        .experience-achievements ul {
+            list-style: none;
+        }
+
+        .experience-achievements li {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .bento-card.large .experience-achievements li {
+            font-size: 0.95rem;
+        }
+
+        .experience-achievements li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #06b6d4;
+            font-weight: bold;
+        }
+
+        .experience-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .tech-tag {
+            padding: 0.375rem 0.75rem;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 6px;
+            color: #06b6d4;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .bento-card.small .tech-tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(6, 182, 212, 0.03);
+            border-top: 1px solid rgba(6, 182, 212, 0.1);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-initials {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #06b6d4, #14b8a6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #0a1628;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .footer-brand p {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #06b6d4;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 10px;
+            color: #06b6d4;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: rgba(6, 182, 212, 0.2);
+            border-color: rgba(6, 182, 212, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(6, 182, 212, 0.1);
+        }
+
+        .footer-bottom p {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .bento-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .bento-card.large {
+                grid-column: span 3;
+                grid-row: span 1;
+            }
+
+            .bento-card.medium {
+                grid-column: span 3;
+            }
+
+            .bento-card.small {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .page-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .bento-card.large,
+            .bento-card.medium,
+            .bento-card.small {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-brand">
+                <div class="nav-initials">MA</div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="publications.html">Publications</a>
+                <a href="experience.html" class="active">Experience</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-badge">
+                <i data-lucide="briefcase"></i>
+                Professional Experience
+            </div>
+            <h1 class="page-title">Career Journey</h1>
+            <p class="page-subtitle">
+                10+ years driving data excellence across Africa and Asia through MEAL frameworks, 
+                statistical modeling, and large-scale data system integration
+            </p>
+            <div class="page-stats">
+                <div class="stat">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Years</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">13</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50M+</div>
+                    <div class="stat-label">People Reached</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience">
+        <div class="container">
+            <div class="bento-grid">
+                <!-- Position 1: Current Role - Large -->
+                <div class="bento-card large current">
+                    <div class="experience-card">
+                        <div class="current-badge">
+                            <span class="current-dot"></span>
+                            Current Position
+                        </div>
+                        <h3 class="experience-title">Manager, Data Analytics and Learning</h3>
+                        <div class="experience-company">Evidence Action</div>
+                        <div class="experience-meta">
+                            <span class="experience-period">Jan 2022 – Current</span>
+                            <span class="experience-location">Supporting 13+ projects across Africa & Asia</span>
+                        </div>
+                        <p class="experience-description">
+                            Leading MEAL frameworks development and data analytics across multiple health interventions
+                        </p>
+                        <div class="experience-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Led publishing of first externally-facing research paper from MEAL team</li>
+                                <li>Integrated DtW program data into Ministry of Education and Health systems in Kenya and Pakistan</li>
+                                <li>Developed RFPs and SOWs for Independent Monitoring firms across 5 countries</li>
+                                <li>Conducted formative research guiding program scale-up in Nigeria</li>
+                            </ul>
+                        </div>
+                        <div class="experience-tech">
+                            <span class="tech-tag">R</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">PowerBI</span>
+                            <span class="tech-tag">DHIS2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Position 2: Crown Agents - Medium -->
+                <div class="bento-card medium">
+                    <div class="experience-card">
+                        <h3 class="experience-title">Data Engineering and Analytics Consultant</h3>
+                        <div class="experience-company">Crown Agents</div>
+                        <div class="experience-meta">
+                            <span class="experience-period">Nov 2020 – May 2021</span>
+                            <span class="experience-location">Kenya</span>
+                        </div>
+                        <p class="experience-description">
+                            Integrated WASH and NTD data systems for joint planning and advocacy
+                        </p>
+                        <div class="experience-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Built and integrated Kenya NTD database into existing WASH databases in DHIS</li>
+                                <li>Developed comprehensive Indicator Reference Sheet for WASH/NTD indicators</li>
+                                <li>Designed NTD endemicity/WASH access decision tools</li>
+                            </ul>
+                        </div>
+                        <div class="experience-tech">
+                            <span class="tech-tag">DHIS2</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">GIS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Position 3: Associate Manager - Large -->
+                <div class="bento-card large">
+                    <div class="experience-card">
+                        <h3 class="experience-title">Associate Manager, Monitoring, Learning & Evaluation</h3>
+                        <div class="experience-company">Evidence Action</div>
+                        <div class="experience-meta">
+                            <span class="experience-period">Jan 2019 – Dec 2021</span>
+                            <span class="experience-location">Kenya, Nigeria, Uganda, Malawi, Pakistan, India</span>
+                        </div>
+                        <p class="experience-description">
+                            Spearheaded digital transformation and data quality improvements across multiple programs
+                        </p>
+                        <div class="experience-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Implemented electronic data collection in Kenya and Pakistan, improving reporting timelines by 60%</li>
+                                <li>Reduced Ministry of Health reporting times from 45 to 7 days through robust system improvements</li>
+                                <li>Developed dynamic data system for NPELF program adopted by DVBNTD department</li>
+                                <li>Trained data analytics team on reproducible analysis scripts</li>
+                            </ul>
+                        </div>
+                        <div class="experience-tech">
+                            <span class="tech-tag">ODK</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Stata</span>
+                            <span class="tech-tag">R</span>
+                            <span class="tech-tag">Excel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Position 4: Senior Associate - Medium -->
+                <div class="bento-card medium">
+                    <div class="experience-card">
+                        <h3 class="experience-title">Senior Associate, Data Management</h3>
+                        <div class="experience-company">Evidence Action</div>
+                        <div class="experience-meta">
+                            <span class="experience-period">Mar 2016 – Dec 2018</span>
+                            <span class="experience-location">Kenya, Uganda, Malawi, Nigeria</span>
+                        </div>
+                        <p class="experience-description">
+                            Overhauled data management pipelines and digitized complex survey systems
+                        </p>
+                        <div class="experience-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Developed comprehensive SOPs, checklists and manuals for data management</li>
+                                <li>Digitized complex surveys, reducing costs and increasing efficiency</li>
+                                <li>Created placement algorithm for 5000+ volunteer placements nationwide</li>
+                            </ul>
+                        </div>
+                        <div class="experience-tech">
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Excel</span>
+                            <span class="tech-tag">PowerBI</span>
+                            <span class="tech-tag">ODK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Position 5: PAL Network - Small -->
+                <div class="bento-card small">
+                    <div class="experience-card">
+                        <h3 class="experience-title">Data Analytics Consultant</h3>
+                        <div class="experience-company">PAL Network / Twaweza East Africa</div>
+                        <div class="experience-meta">
+                            <span class="experience-period">Apr 2015 – Feb 2018</span>
+                            <span class="experience-location">East Africa</span>
+                        </div>
+                        <p class="experience-description">
+                            Electronic data capture systems and automated reporting
+                        </p>
+                        <div class="experience-tech">
+                            <span class="tech-tag">CSPro</span>
+                            <span class="tech-tag">KoBo</span>
+                            <span class="tech-tag">Stata</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Position 6: KEMRI - Small -->
+                <div class="bento-card small">
+                    <div class="experience-card">
+                        <h3 class="experience-title">Data Manager</h3>
+                        <div class="experience-company">Kenya Medical Research Institute (KEMRI)</div>
+                        <div class="experience-meta">
+                            <span class="experience-period">Aug 2014 – Mar 2015</span>
+                            <span class="experience-location">Kenya</span>
+                        </div>
+                        <p class="experience-description">
+                            Data management for health surveys and research projects
+                        </p>
+                        <div class="experience-tech">
+                            <span class="tech-tag">Stata</span>
+                            <span class="tech-tag">SAS</span>
+                            <span class="tech-tag">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-initials">MA</div>
+                    <p>Data-Driven Solutions for Global Health Impact</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#skills">Skills</a>
+                    <a href="index.html#projects">Projects</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="experience.html">Experience</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="mailto:your.email@example.com" aria-label="Email">
+                        <i data-lucide="mail"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i data-lucide="linkedin"></i>
+                    </a>
+                    <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i data-lucide="github"></i>
+                    </a>
+                    <a href="https://yourwebsite.com" target="_blank" rel="noopener noreferrer" aria-label="Website">
+                        <i data-lucide="globe"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 All rights reserved.</p>
+                <p>Built with precision and passion for data excellence</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

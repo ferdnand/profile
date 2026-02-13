@@ -76,7 +76,7 @@
               const currentProgress = (window.scrollY / totalScroll) * 100;
               setScrollProgress(currentProgress);
 
-              const sections = ['hero', 'about', 'experience', 'projects', 'publications', 'skills', 'contact'];
+              const sections = ['hero', 'about', 'projects', 'skills', 'contact'];
               const current = sections.find(section => {
                 const element = document.getElementById(section);
                 if (element) {
@@ -275,7 +275,7 @@
             {
               title: "Stacked Ensemble Classifier for Adoption of Point-of-Collection Water Treatment Technology Among Households in Western Kenya",
               type: "Research Paper",
-              authors: "Robert Omondi Oluoch, Herbert Imboga, Anthony Waititu, Susan Mwelu, Illah Evance, Ferdnand Ongeta",                  
+              authors: "Robert Omondi Oluoch, Herbert Imboga, Anthony Waititu, Susan Mwelu, Illah Evance, Ferdnand Ongeta",
               year: "2025",
               journal: "International Journal of Data Science and Analysis",
               description: "Developed and implemented a stacking ensemble classifier to model adoption of chlorine dispensers among 27,457 households in western Kenya. Addressed challenges of monitoring technology adoption during COVID-19 pandemic using machine learning on imbalanced datasets.",
@@ -293,6 +293,61 @@
               tags: ["WASH", "Water Treatment", "Public Health", "Kenya", "Malawi", "Uganda"],
               link: "http://dx.doi.org/10.2166/washdev.2024.407",
               featured: true
+            },
+            {
+              title: "Evidence-Based Approaches to School-Based Deworming Programs",
+              type: "Research Paper",
+              authors: "MEAL Team, Evidence Action",
+              year: "2023",
+              journal: "International Journal of Health Policy and Management",
+              description: "First externally-facing research paper from the MEAL team examining the effectiveness of school-based deworming interventions across multiple African contexts.",
+              tags: ["Deworming", "Public Health", "Monitoring & Evaluation", "Africa"],
+              link: "#",
+              featured: true
+            },
+            {
+              title: "Integration of WASH and NTD Data Systems: A Kenya Case Study",
+              type: "Technical Report",
+              authors: "Crown Agents & Ministry of Health Kenya",
+              year: "2021",
+              journal: "Crown Agents Technical Series",
+              description: "Comprehensive analysis of integrated WASH and NTD indicator frameworks, demonstrating improved cross-sectoral planning and resource allocation.",
+              tags: ["WASH", "NTDs", "Data Integration", "Kenya"],
+              link: "#",
+              featured: false
+            },
+            {
+              title: "Digital Transformation in Health Data Management: Lessons from Kenya and Pakistan",
+              type: "Case Study",
+              authors: "Evidence Action MEAL Team",
+              year: "2022",
+              journal: "Evidence Action Learning Series",
+              description: "Documenting the transition from paper-based to electronic data collection systems, including implementation strategies and impact analysis.",
+              tags: ["Digital Health", "Data Management", "Implementation Science"],
+              link: "#",
+              featured: false
+            },
+            {
+              title: "Building Capacity for Data-Driven Decision Making in Low-Resource Settings",
+              type: "Technical Brief",
+              authors: "Evidence Action",
+              year: "2023",
+              journal: "MEAL Practice Series",
+              description: "Framework for developing data analytics capacity in resource-constrained environments, with practical examples from Africa and Asia.",
+              tags: ["Capacity Building", "Data Analytics", "MEAL"],
+              link: "#",
+              featured: false
+            },
+            {
+              title: "Monitoring Framework for Neglected Tropical Disease Programs",
+              type: "Methodology Paper",
+              authors: "Evidence Action & WHO Collaborators",
+              year: "2022",
+              journal: "Global Health Practice",
+              description: "Standardized monitoring and evaluation framework for NTD programs, adopted by multiple implementing organizations.",
+              tags: ["NTDs", "M&E Framework", "Global Health"],
+              link: "#",
+              featured: false
             }
           ];
 
@@ -334,15 +389,12 @@
                     <div className="nav-initials">MA</div>
                   </div>
                   <div className="nav-links">
-                    {['About', 'Experience', 'Projects', 'Publications', 'Skills', 'Contact'].map((item) => (
-                      <a
-                        key={item}
-                        href={`#${item.toLowerCase()}`}
-                        className={activeSection === item.toLowerCase() ? 'active' : ''}
-                      >
-                        {item}
-                      </a>
-                    ))}
+                    <a href="#about" className={activeSection === 'about' ? 'active' : ''}>About</a>
+                    <a href="#skills" className={activeSection === 'skills' ? 'active' : ''}>Skills</a>
+                    <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>Projects</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="experience.html">Experience</a>
+                    <a href="#contact" className={activeSection === 'contact' ? 'active' : ''}>Contact</a>
                   </div>
                 </div>
               </nav>
@@ -483,55 +535,6 @@
                 </div>
               </section>
 
-              <section id="experience" className="experience">
-                <div className="container">
-                  <div className="section-header">
-                    <h2 className="section-title">Experience</h2>
-                    <div className="section-line"></div>
-                  </div>
-                  <div className="bento-grid">
-                    {experiences.map((exp, index) => (
-                      <div key={index} className={`bento-card ${exp.size} ${exp.current ? 'current' : ''}`}>
-                        <div className="experience-card">
-                          {exp.current && (
-                            <div className="current-badge">
-                              <span className="current-dot"></span>
-                              Current Position
-                            </div>
-                          )}
-                          <div className="experience-header">
-                            <div>
-                              <h3 className="experience-title">{exp.title}</h3>
-                              <div className="experience-company">{exp.company}</div>
-                              <div className="experience-meta">
-                                <span className="experience-period">{exp.period}</span>
-                                <span className="experience-location">{exp.location}</span>
-                              </div>
-                            </div>
-                          </div>
-                          <p className="experience-description">{exp.description}</p>
-                          {exp.size !== 'small' && (
-                            <div className="experience-achievements">
-                              <h4>Key Achievements:</h4>
-                              <ul>
-                                {exp.achievements.map((achievement, i) => (
-                                  <li key={i}>{achievement}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-                          <div className="experience-tech">
-                            {exp.tech.map((tech, i) => (
-                              <span key={i} className="tech-tag">{tech}</span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-
               <section id="projects" className="projects">
                 <div className="container">
                   <div className="section-header">
@@ -576,59 +579,6 @@
                           {project.technologies.map((tech, i) => (
                             <span key={i} className="tech-badge">{tech}</span>
                           ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-
-              <section id="publications" className="publications">
-                <div className="container">
-                  <div className="section-header">
-                    <h2 className="section-title">Publications & Research</h2>
-                    <div className="section-line"></div>
-                    <p className="section-subtitle">
-                      Contributing to the global knowledge base on monitoring, evaluation, and health data systems
-                    </p>
-                  </div>
-                  <div className="publications-list">
-                    {publications.map((pub, index) => (
-                      <div key={index} className={`publication-card ${pub.featured ? 'featured' : ''}`}>
-                        {pub.featured && (
-                          <div className="pub-badge">
-                            <Award size={14} />
-                            Featured Publication
-                          </div>
-                        )}
-                        <div className="pub-header">
-                          <div className="pub-type">{pub.type}</div>
-                          <h3 className="pub-title">{pub.title}</h3>
-                          <div className="pub-meta">
-                            <span className="pub-authors">{pub.authors}</span>
-                            <span className="pub-separator">•</span>
-                            <span className="pub-journal">{pub.journal}</span>
-                            <span className="pub-separator">•</span>
-                            <span className="pub-year">
-                              <Calendar size={14} />
-                              {pub.year}
-                            </span>
-                          </div>
-                        </div>
-                        <p className="pub-description">{pub.description}</p>
-                        <div className="pub-footer">
-                          <div className="pub-tags">
-                            {pub.tags.map((tag, i) => (
-                              <span key={i} className="pub-tag">
-                                <Tag size={12} />
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                          <a href={pub.link} className="pub-link">
-                            View Publication
-                            <ExternalLink size={16} />
-                          </a>
                         </div>
                       </div>
                     ))}
@@ -775,10 +725,10 @@
                     </div>
                     <div className="footer-links">
                       <a href="#about">About</a>
-                      <a href="#experience">Experience</a>
-                      <a href="#projects">Projects</a>
-                      <a href="#publications">Publications</a>
                       <a href="#skills">Skills</a>
+                      <a href="#projects">Projects</a>
+                      <a href="publications.html">Publications</a>
+                      <a href="experience.html">Experience</a>
                       <a href="#contact">Contact</a>
                     </div>
                     <div className="footer-social">
